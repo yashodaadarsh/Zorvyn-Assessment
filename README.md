@@ -7,6 +7,53 @@
 > **Test credentials:** username `admin` / password `admin123`
 
 ---
+
+## How to Test the Live API (Quick Start)
+
+All endpoints except `/api/v1/login` are protected by JWT. Follow these steps to test:
+
+### Step 1 — Get a JWT token
+
+Call the login endpoint with the default admin credentials:
+
+```
+POST /api/v1/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+```
+
+You will receive a response like:
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9..."
+}
+```
+
+Copy the token value.
+
+### Step 2 — Authorize in Swagger UI
+
+1. Click the **Authorize** button (top right, lock icon)
+2. In the `BearerAuth` field, enter your token as:
+   ```
+   Bearer eyJhbGciOiJIUzI1NiJ9...
+   ```
+3. Click **Authorize** → **Close**
+
+You can now call all protected endpoints directly from the Swagger UI.
+
+### Step 3 — Test any endpoint
+
+All APIs are now unlocked. You can create records, manage users, and view dashboard data directly from the browser.
+
+> **Token expiry:** Tokens are valid for 1 hour. If you get a 401 response, repeat Step 1 to get a fresh token.
+
+---
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
