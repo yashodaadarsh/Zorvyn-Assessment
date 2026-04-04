@@ -65,7 +65,7 @@ public class RecordsService {
                 .amount(recordRequest.getAmount())
                 .type(recordRequest.getType())
                 .category(recordRequest.getCategory())
-                .date(new Date())
+                .date(recordRequest.getDate() != null ? recordRequest.getDate() : new Date())
                 .note(recordRequest.getNote())
                 .build();
     }

@@ -6,6 +6,7 @@ import com.adarsh.zorvyn.Entity.Status;
 import com.adarsh.zorvyn.Response.UserResponse;
 import com.adarsh.zorvyn.Service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -57,7 +58,7 @@ public class UserController {
     public ResponseEntity<UserResponse> registerUser(
             @Valid @RequestBody RegisterUserRequest request
     ){
-        return ResponseEntity.ok(userService.registerUser(request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(request));
     }
 
     /**

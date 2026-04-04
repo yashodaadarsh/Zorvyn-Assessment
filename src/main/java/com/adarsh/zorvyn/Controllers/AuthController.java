@@ -2,11 +2,13 @@ package com.adarsh.zorvyn.Controllers;
 
 import com.adarsh.zorvyn.Request.AuthRequest;
 import com.adarsh.zorvyn.Utils.JWTUtil;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,7 +55,7 @@ public class AuthController {
      *   401         - { "error": "Invalid username or password" }
      */
     @PostMapping("/login")
-    public ResponseEntity<?> generateToken(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<?> generateToken( @Valid @RequestBody AuthRequest authRequest) {
         try {
             // Attempt to authenticate using Spring Security's authentication flow.
             // Internally this loads the user by username, then checks the password with BCrypt.
@@ -74,7 +76,7 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(Map.of("error", "Authentication failed"));
 
-        } catch (BadCredentialsException e) {
+        } catch (BadCredentialsException | DisabledException e) {
             // Wrong username or password — return 401 with a clear message.
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(Map.of("error", "Invalid username or password"));

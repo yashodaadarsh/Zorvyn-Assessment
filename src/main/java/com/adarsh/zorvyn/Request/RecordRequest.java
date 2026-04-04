@@ -1,6 +1,7 @@
 package com.adarsh.zorvyn.Request;
 
 import com.adarsh.zorvyn.Entity.Type;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class RecordRequest {
     @NotNull(message = "Type is required")
     private Type type;
 
-    @NotNull(message = "Category is required")
+    @NotBlank(message = "Category is required")
     private String category;
 
     private Date date;

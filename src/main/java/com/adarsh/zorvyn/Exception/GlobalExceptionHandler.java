@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,4 +37,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status)
                 .body(Map.of("error", message != null ? message : "An unexpected error occurred"));
     }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<Map<String, String>> handleTypeMismatch(
+            MethodArgumentTypeMismatchException ex) {
+        String msg = "Invalid value '" + ex.getValue() +
+                "' for parameter '" + ex.getName() + "'";
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("error", msg));
+    }
+
 }

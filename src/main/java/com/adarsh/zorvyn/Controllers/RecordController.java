@@ -8,6 +8,7 @@ import com.adarsh.zorvyn.Service.RecordsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -65,7 +66,7 @@ public class RecordController {
             @Valid @RequestBody RecordRequest recordRequest,
             @AuthenticationPrincipal User user  // injected from the validated JWT token
     ) {
-        return ResponseEntity.ok(recordsService.createRecord(recordRequest, user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(recordsService.createRecord(recordRequest, user));
     }
 
     /**

@@ -17,8 +17,8 @@ public interface RecordsRepository extends JpaRepository<Record, Integer> {
             "(:category IS NULL OR LOWER(r.category) = LOWER(:category)) AND " +
             "(:from IS NULL OR r.date >= :from) AND " +
             "(:to IS NULL OR r.date <= :to) AND " +
-            "(:search IS NULL OR LOWER(r.note) LIKE LOWER(CONCAT('%', :search, '%')) " +
-            "OR LOWER(r.category) LIKE LOWER(CONCAT('%', :search, '%')))")
+            "(:search IS NULL OR (LOWER(r.note) LIKE LOWER(CONCAT('%', :search, '%')) " +
+            "OR LOWER(r.category) LIKE LOWER(CONCAT('%', :search, '%'))))")
     Page<Record> findWithFilters(
             @Param("type") Type type,
             @Param("category") String category,
