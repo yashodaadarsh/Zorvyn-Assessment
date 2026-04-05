@@ -2,7 +2,7 @@
 
 > **Live Demo:** [https://zorvyn-assessment-p415.onrender.com/swagger-ui/index.html](https://zorvyn-assessment-p415.onrender.com/swagger-ui/index.html)
 >
-> **Note:** The service may take **30–60 seconds** to respond on first request — this is expected on the free Render tier (cold start). Please wait and retry if the page does not load immediately.
+> **Note:** The service may take **60–120 seconds** to respond on first request — this is expected on the free Render tier (cold start). Please wait and retry if the page does not load immediately.
 >
 > **Test credentials:** username `admin` / password `admin123`
 
