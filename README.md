@@ -76,16 +76,16 @@ All APIs are now unlocked. You can create records, manage users, and view dashbo
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Language | Java 24 |
-| Framework | Spring Boot 3.5.3 |
+| Layer | Technology                          |
+|---|-------------------------------------|
+| Language | Java 21                             |
+| Framework | Spring Boot 3.5.3                   |
 | Security | Spring Security + JWT (JJWT 0.12.6) |
-| Database | MySQL 8 |
-| ORM | Spring Data JPA / Hibernate |
-| Validation | Jakarta Bean Validation |
-| API Docs | SpringDoc OpenAPI (Swagger UI) |
-| Build Tool | Maven |
+| Database | MySQL 8                             |
+| ORM | Spring Data JPA / Hibernate         |
+| Validation | Jakarta Bean Validation             |
+| API Docs | SpringDoc OpenAPI (Swagger UI)      |
+| Build Tool | Maven                               |
 
 ---
 
@@ -115,7 +115,7 @@ docs/
 
 ### Prerequisites
 
-- Java 24+
+- Java 21+
 - Maven 3.8+
 - MySQL 8 running locally
 
